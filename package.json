@@ -4,6 +4,7 @@
   "description": "Reto 9 Octubre 26: Curso de Backend con Node",
   "main": "index.js",
   "dependencies": {
+    "@hapi/boom": "^8.0.1",
     "bcrypt": "^3.0.6",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

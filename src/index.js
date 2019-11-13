@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 
 const { config } = require('./config');
+
+const authApi = require('./routes/auth');
 const platziStore = require('./routes')
 
 app.get('/', (req, res) => {
@@ -10,6 +12,8 @@ app.get('/', (req, res) => {
 });
 //middleware body parser
 app.use(express.json());
+
+authApi(app);
 platziStore(app);
 
 app.listen(config.port, err => {

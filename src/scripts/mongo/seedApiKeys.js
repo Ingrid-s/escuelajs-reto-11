@@ -1,9 +1,10 @@
 // DEBUG=app:* node scripts/mongo/seedApiKeys.js
+//DEBUG=app:* node src/scripts/mongo/seedApiKeys.js
 
 const chalk = require('chalk');
 const debug = require('debug')('app:scripts:api-keys');
 const crypto = require('crypto');
-const MongoLib = require('../../src/lib/mongo');
+const MongoConnect = require('../../lib/mongo');
 
 const adminScopes = [
   'signin:auth',
@@ -44,7 +45,7 @@ function generateRandomToken() {
 
 async function seedApiKeys() {
   try {
-    const mongoDB = new MongoLib();
+    const mongoDB = new MongoConnect();
 
     const promises = apiKeys.map(async apiKey => {
       await mongoDB.create('api-keys', apiKey)
